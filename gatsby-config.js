@@ -7,7 +7,15 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
+        strategy: 'img',
         plugins: [
+          {
+            resolve: 'gatsby-remark-graph',
+            options: {
+              language: 'mermaid', // default
+              theme: 'default', // could also be dark, forest, or neutral
+            },
+          },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
