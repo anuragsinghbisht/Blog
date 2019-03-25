@@ -1,16 +1,32 @@
 module.exports = {
-    siteMetadata: {
-        title: "My Blog",
-        description: "This is a cool blog."
-    },
-    plugins: [
-        `gatsby-transformer-remark`,
-        {
-            resolve: `gatsby-source-filesystem`,
+  siteMetadata: {
+    title: 'Personal Blog',
+    description: 'By Anurag Singh Bisht',
+  },
+  plugins: [
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
             options: {
-                name: `pages`,
-                path: `${__dirname}/src/pages`
-            }
-        }
-    ]
-};
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages`,
+      },
+    },
+  ],
+}

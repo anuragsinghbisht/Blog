@@ -13,13 +13,34 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-brands-svg-icons": "^5.8.1",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "bootstrap": "^4.3.1",
     "gatsby": "^2.1.31",
+    "gatsby-remark-prismjs": "^3.2.6",
     "gatsby-source-filesystem": "^2.0.27",
     "gatsby-transformer-remark": "^2.3.5",
+    "i": "^0.3.6",
+    "npm": "^6.9.0",
+    "prism-themes": "^1.0.1",
+    "prismjs": "^1.15.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },
   "devDependencies": {
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-wesbos": "0.0.19",
+    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^1.6.0",
     "prettier": "^1.16.4"
   },
   "repository": {

@@ -1,0 +1,36 @@
+* {
+    font-family: "avenir"
+}
+
+header.masthead {
+    margin-bottom: 50px;
+    background: no-repeat center center;
+    background-image: url("../../assets/header.jpg");
+    background-color: #868e96;
+    background-attachment: scroll;
+    position: relative;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover    
+}
+
+header.masthead .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #212529;
+    opacity: 0.5
+}
+
+header.masthead .page-heading {
+    font-size: 50px;
+}
+
+@media only  screen and (min-width: 768px) {
+    header.masthead .page-heading {
+        font-size: 80px;
+    }
+}

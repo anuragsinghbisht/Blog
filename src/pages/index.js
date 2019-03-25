@@ -1,57 +1,64 @@
-import React from "react"
-import { graphql, Link } from 'gatsby';
-import Header from '../components/Header';
+import React, { Fragment } from 'react'
+import { graphql } from 'gatsby'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas, faCircle } from '@fortawesome/free-solid-svg-icons'
+import Header from '../components/header'
+import PostPreviews from '../components/post-preview'
+import Tags from '../components/tags'
+import Footer from '../components/footer'
 
-const Layout = ({ data }) => {
-    const edges = data.allMarkdownRemark.edges;
-    return (
-        <div>
-            <Header />
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                fontFamily: 'avenir'
-            }}>
-                {
-                    edges.map(edge => {
-                        const { frontmatter } = edge.node
-                        return (
-                            <div key={frontmatter.path} style={{
-                                marginBottom: '1rem'
-                            }}>
-                                <Link to={frontmatter.path}>
-                                    {frontmatter.title}
-                                </Link>
-                            </div>
-                        )
-                    })
-                }
-            </div>
+library.add(fab, fas, faCircle)
 
-            <div style={{ fontFamily: 'avenir' }}>
-                <Link to="/tags">Browse by Tags</Link>
-            </div>
+const App = ({ data }) => {
+  const { edges } = data.allMarkdownRemark
+
+  const allTags = edges.reduce((acc, edge) => {
+    const { frontmatter } = edge.node
+    const { tags } = frontmatter
+    tags.forEach(tag => {
+      if (!acc.includes(tag)) {
+        acc.push(tag)
+      }
+    })
+    return acc
+  }, [])
+
+  return (
+    <Fragment>
+      <Header />
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-8 col-md-10 mx-auto">
+            <Tags edges={edges} tags={allTags} />
+          </div>
         </div>
-    )
+        <div className="row">
+          <div className="col-lg-8 col-md-10 mx-auto">
+            <PostPreviews edges={edges} />
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </Fragment>
+  )
 }
 
 export const query = graphql`
-    query HomepageQuery{
-      allMarkdownRemark(
-          sort: {order: ASC, fields: [frontmatter___date]}
-      ){
-        edges{
-          node{
-            frontmatter{
-              title
-              path
-              date
-            }
+  query HomepageQuery {
+    allMarkdownRemark(sort: { order: ASC, fields: [frontmatter___date] }) {
+      edges {
+        node {
+          frontmatter {
+            title
+            path
+            date
+            tags
           }
         }
       }
     }
-`;
+  }
+`
 
-export default Layout;
+export default App
